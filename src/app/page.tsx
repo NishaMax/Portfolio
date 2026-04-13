@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { FadeInUp } from "@/components/motion/FadeInUp";
+import { RotatingText } from "@/components/motion/RotatingText";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Section } from "@/components/ui/Section";
 import { experience, projects, skills } from "@/lib/data";
@@ -37,6 +39,9 @@ export default function Home() {
             <a className="hover:text-white" href="#projects">
               Projects
             </a>
+            <a className="hover:text-white" href="#about">
+              About
+            </a>
             <a className="hover:text-white" href="#skills">
               Skills
             </a>
@@ -55,95 +60,161 @@ export default function Home() {
         <section className="relative py-20 sm:py-28">
           <div className="absolute inset-0 -z-10" />
 
-          <FadeInUp>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_25px_rgba(34,211,238,0.55)]" />
-              Dark • Glass • Motion
+          <div className="grid items-center gap-12 lg:grid-cols-[1.25fr_0.75fr]">
+            {/* Left: copy */}
+            <div>
+              <FadeInUp>
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 backdrop-blur-md">
+                  <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_25px_rgba(34,211,238,0.55)]" />
+                  Dark • Glass • Motion
+                </div>
+              </FadeInUp>
+
+              <FadeInUp delay={0.06}>
+                <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+                  Rasikumar Nishantha
+                  <span className="text-glow block bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                    <RotatingText
+                      items={[
+                        "Computer Science Undergraduate",
+                        "Full-Stack Developer / Software Engineer",
+                        "Data Science Enthusiast",
+                      ]}
+                    />
+                  </span>
+                </h1>
+              </FadeInUp>
+
+              <FadeInUp delay={0.18}>
+                <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+                  <a
+                    href="#projects"
+                    className="neon-ring inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 text-sm font-semibold text-black transition-transform hover:scale-[1.02] active:scale-[0.99]"
+                  >
+                    View My Work <ArrowRight className="h-4 w-4" />
+                  </a>
+
+                  <div className="flex items-center gap-3 text-white/70">
+                    <a
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-[1.04]"
+                      href="https://github.com/NishaMax"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="GitHub"
+                    >
+                      <GitBranch className="h-5 w-5" />
+                    </a>
+                    <a
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-[1.04]"
+                      href="#"
+                      aria-label="LinkedIn"
+                    >
+                      <Link className="h-5 w-5" />
+                    </a>
+                    <a
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-[1.04]"
+                      href="#contact"
+                      aria-label="Contact"
+                    >
+                      <Mail className="h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
+              </FadeInUp>
+
+              <FadeInUp delay={0.22}>
+                <div className="mt-12 grid gap-4 sm:grid-cols-3">
+                  {[
+                    {
+                      label: "Focus",
+                      value: "Full-stack + AI",
+                    },
+                    {
+                      label: "Style",
+                      value: "Glassmorphism",
+                    },
+                    {
+                      label: "Motion",
+                      value: "Framer Motion",
+                    },
+                  ].map((item) => (
+                    <GlassCard key={item.label} className="p-5">
+                      <p className="text-xs font-medium tracking-widest text-white/50">
+                        {item.label.toUpperCase()}
+                      </p>
+                      <p className="mt-2 text-sm font-semibold text-white/90">
+                        {item.value}
+                      </p>
+                    </GlassCard>
+                  ))}
+                </div>
+              </FadeInUp>
             </div>
-          </FadeInUp>
 
-          <FadeInUp delay={0.06}>
-            <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-              Rasikumar Nishantha
-              <span className="text-glow block bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                Computer Science Undergraduate &amp; Data Science Enthusiast
-              </span>
-            </h1>
-          </FadeInUp>
-
-          <FadeInUp delay={0.12}>
-            <p className="mt-6 max-w-2xl text-pretty text-base leading-7 text-white/70 sm:text-lg">
-              I build end-to-end products that combine modern web engineering with
-              applied AI—focused on clean UX, robust backends, and data-driven
-              experimentation.
-            </p>
-          </FadeInUp>
-
-          <FadeInUp delay={0.18}>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a
-                href="#projects"
-                className="neon-ring inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 text-sm font-semibold text-black transition-transform hover:scale-[1.02] active:scale-[0.99]"
-              >
-                View My Work <ArrowRight className="h-4 w-4" />
-              </a>
-
-              <div className="flex items-center gap-3 text-white/70">
-                <a
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-[1.04]"
-                  href="https://github.com/NishaMax"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub"
-                >
-                  <GitBranch className="h-5 w-5" />
-                </a>
-                <a
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-[1.04]"
-                  href="#"
-                  aria-label="LinkedIn"
-                >
-                  <Link className="h-5 w-5" />
-                </a>
-                <a
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-transform hover:scale-[1.04]"
-                  href="#contact"
-                  aria-label="Contact"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
+            {/* Right: image */}
+            <FadeInUp
+              delay={0.12}
+              className="mx-auto w-full max-w-sm lg:max-w-none"
+            >
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/15 bg-white/5 backdrop-blur-md shadow-[0_20px_80px_rgba(0,0,0,0.55)]">
+                <Image
+                  src="/images/my.jpg"
+                  alt="Rasikumar Nishantha"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 420px, 80vw"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
-            </div>
-          </FadeInUp>
-
-          <FadeInUp delay={0.22}>
-            <div className="mt-12 grid gap-4 sm:grid-cols-3">
-              {[
-                {
-                  label: "Focus",
-                  value: "Full-stack + AI",
-                },
-                {
-                  label: "Style",
-                  value: "Glassmorphism",
-                },
-                {
-                  label: "Motion",
-                  value: "Framer Motion",
-                },
-              ].map((item) => (
-                <GlassCard key={item.label} className="p-5">
-                  <p className="text-xs font-medium tracking-widest text-white/50">
-                    {item.label.toUpperCase()}
-                  </p>
-                  <p className="mt-2 text-sm font-semibold text-white/90">
-                    {item.value}
-                  </p>
-                </GlassCard>
-              ))}
-            </div>
-          </FadeInUp>
+              <p className="mt-4 text-center text-xs text-white/50">
+                Replace{" "}
+                <span className="font-mono">public/images/my.jpg</span> with your
+                photo.
+              </p>
+            </FadeInUp>
+          </div>
         </section>
+
+        <Section id="about" eyebrow="A bit more" title="About me">
+          <FadeInUp>
+            <GlassCard className="p-6 sm:p-8">
+              <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="space-y-4 text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
+                  <p>
+                    I’m a Computer Science undergraduate and Full-Stack AI Developer
+                    focused on building production-grade Generative AI applications
+                    and scalable backend systems.
+                  </p>
+                  <p>
+                    I bridge Data Science and Software Engineering—using Python, SQL,
+                    and TypeScript to design end-to-end RAG pipelines with LangChain
+                    and ChromaDB.
+                  </p>
+                  <p>
+                    I’ve shipped complete, containerized products across the stack,
+                    from real-time monitoring systems (Lanka Watch) to intelligent,
+                    agent-driven platforms (CareerVerse), applying clean engineering
+                    practices and Agile delivery.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
+                  <p className="text-xs font-medium tracking-widest text-white/50">
+                    HIGHLIGHTS
+                  </p>
+                  <ul className="mt-3 space-y-2 text-sm text-white/70">
+                    <li>• Production-grade GenAI apps</li>
+                    <li>• RAG pipelines (LangChain + ChromaDB)</li>
+                    <li>• Scalable APIs & backend systems</li>
+                    <li>• Full-stack, containerized delivery</li>
+                    <li>• Clean architecture + Agile</li>
+                  </ul>
+                </div>
+              </div>
+            </GlassCard>
+          </FadeInUp>
+        </Section>
 
         {/* Projects */}
         <Section id="projects" eyebrow="Selected work" title="Projects">
